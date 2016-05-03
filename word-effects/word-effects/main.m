@@ -28,6 +28,9 @@ int main(int argc, const char * argv[]) {
         
         //convert char array to an NSString object
         NSString *inputString = [NSString stringWithUTF8String: inputChars];
+        inputString = [inputString substringToIndex:[inputString length] - 1];
+        
+        
         
         //print NSSString object
         //NSLog(@"Input was: %@", inputString);
@@ -59,10 +62,13 @@ int main(int argc, const char * argv[]) {
                     NSLog(@"%@", [inputString stringByAppendingString: @", eh?"]);
                     break;
                 case '5':
-                    NSLog(@"%@", inputString);
+                    if([[inputString substringFromIndex: [inputString length] - 1] isEqualToString: @"?"])
+                        printf("I don't know");
+                    else if ([[inputString substringFromIndex: [inputString length] - 1] isEqualToString: @"!"])
+                        printf("Whoa, calm down!");
                     break;
                 case '6':
-                    NSLog(@"%@", inputString);
+                    NSLog(@"%@", [inputString stringByReplacingOccurrencesOfString: @" " withString: @"-"]);
                     break;
                 default:
                     break;
